@@ -1,0 +1,2 @@
+Aus Datenschutztechnischen Gründen wurden alle .json Dateien, welche die Informationen über die Alben etc. hatten aus den Ordnern entfernt.
+Nur die tatsächlich verwendeten Dateien sind verblieben in Project_Showcase\lyrics\pop_rock\en und Project_Showcase\lyrics\rap\en .

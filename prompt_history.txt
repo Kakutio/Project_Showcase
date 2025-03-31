@@ -1,0 +1,159 @@
+p001 "Wir wollen gute und schlechte Lyrics aus Songs unterscheiden via LLMs. Dazu haben wir Lines aus einer Gruppe von verschiedenen Artists mit guten Lyrics (Gruppe A) und einer Gruppe von Artists mit schlechten Lyrics (Gruppe B) genommen. Wir nutzen Beispiele aus Gruppe A und Gruppe B (100 Stück pro Gruppe im Prompt) um weitere 5000 aus Gruppe A zu prompten und zu gucken ob das LLM 5000 mal Gruppe A sagt oder andere (Gruppe B). Konfiguration z.B. 2500 mal A , 2500 mal B. Damit wollen wir das LLM testen. Ist dies ein guter/geeigneter Ansatz für eine Reward Funktion in Reinforcement Learning?"
+
+p002 "Das LLM soll keine Lyrcis generieren sondern ein Reinforcement Learning Algorithmus generiert die Lyrics. Das LLM soll den Reward bestimmen."
+
+p003 "your suggestions are good. Make a new prompt including those but for the scale i dont want numbers but words (something like bad to good, atleast 7 of them though)"
+
+p004 "Ist dies ein guter/geeigneter Ansatz für eine Reward Funktion in Reinforcement Learning?"
+
+p005 "dann füge noch hinzu was dem Prompt fehlt (bleib beim prompt englisch). Dann frage ich mich ob die comparison based evaluation wirklich nur optional bleiben sollte und nicht Pflicht sein sollte."
+
+p006 "yes"
+
+p007 "Here’s the improved prompt incorporating all the suggested refinements:
+
+	Prompt:
+
+	You are a highly skilled language model trained to evaluate song lyrics based on multiple dimensions of quality. Your task is to assess the following lyrics and provide a qualitative rating based on lyrical depth, coherence, originality, poetic quality, and overall stylistic excellence. Additionally, you must compare multiple lyric samples to determine which one is superior and justify your reasoning.
+
+	Evaluation Criteria:
+	For each set of lyrics, assess the following aspects:
+
+	1. Semantic Depth: Does the text convey meaningful or thought-provoking ideas?
+	2. Stylistic Quality: Does it have a strong artistic voice or a distinctive writing style?
+	3. Poetic Elements: Does it employ effective metaphors, imagery, or rhyme schemes?
+	4. Originality: Is the text fresh and creative rather than formulaic?
+	5. Emotional Impact: Do the lyrics evoke strong emotions and feel authentic?
+	
+
+	--- Remove? ---
+	Coherence: Are the lines logically connected and flowing well?
+	Genre Appropriateness: If applicable, does the quality assessment depend on the genre? Explain why.
+	---------------
+
+	
+	Rating Scale:
+	Rather than using numerical scores, score the lyrics into one of the following seven levels:
+
+	Incoherent – Random or nonsensical words without meaningful structure.
+	Clichéd – Overused phrases and generic expressions with little originality.
+	Basic – Understandable but simplistic, lacking depth or strong poetic elements.
+	Passable – Some structure and meaning, but unremarkable in creativity.
+	Engaging – Shows artistic intent, has some originality and coherence.
+	Captivating – Strong lyrical quality, rich imagery, and poetic craftsmanship.
+	Masterful – Exceptional artistry, deeply impactful, and stylistically outstanding.
+
+	For each rating, provide a detailed justification (2-3 sentences) explaining why the lyrics fit that category. If genre conventions influence your rating, specify how.
+
+
+	---------------------------------
+	Mandatory Comparison-Based Evaluation:
+	In addition to the individual rating, always compare at least two sets of lyrics. Determine which one is superior and justify your reasoning. Consider how each lyric sample aligns with the evaluation criteria. If both are of similar quality, highlight their strengths and weaknesses.Example Response:
+
+	"Lyrics A are 'Captivating' due to their strong use of metaphor, emotional depth, and smooth lyrical flow. They maintain coherence throughout and avoid clichés, making them a compelling piece of songwriting. In contrast, Lyrics B are 'Passable' because they contain some poetic elements but rely on predictable phrasing and lack a strong emotional impact. Therefore, Lyrics A are superior."
+
+	Plagiarism & Over-Similarity Consideration:
+	Ensure that the lyrics do not closely resemble existing works. Penalize overly formulaic or repetitive structures that do not introduce fresh ideas or creativity. If plagiarism is detected, classify the lyrics as Clichéd or lower.
+
+	What Follows are a series of examples i.e. lines with scores, that you will take into consideration when evaluating. These are going to be grouped in two Groups.
+
+
+	#GROUP_0 EXAMPLES:
+
+	-> Examples 1
+	-> ...
+	-> Example N
+
+
+	#GROUP_1 EXAMPLES:
+
+	-> Examples 1
+	-> ...
+	-> Example N
+
+
+	Take your time and make sure you evaluate sensibly. Now, evaluate the following lyrics:
+	[Insert generated lyrics here]
+
+p008+ -> Es wurden viele weitere Prompts verwendet um diesen Output zu optimieren. Das finale Ergebnis:
+
+	"You are a highly skilled language model trained to evaluate song lyrics based on multiple dimensions of quality. Your task is to assess the lyrics at the bottom and provide a qualitative rating based on resonance, coherence, musicality, narrative, and originality.
+
+	Evaluation Criteria in detail:	
+
+	For each set of lyrics, assess the following aspects:
+
+	Resonance: Do the lyrics create a lasting impact or connection with the listener?
+
+	Coherence: Do the lyrics maintain a logical and structured flow?
+
+	Musicality: Do the lyrics exhibit rhythm, cadence, and lyrical fluidity?
+
+	Narrative: Do the lyrics tell a compelling story or convey a meaningful idea?
+
+	Originality: Are the lyrics fresh and creative rather than predictable or formulaic?
+
+
+
+	Rating Scale:
+
+	Rather than using numerical scores, score the lyrics into one of the following seven levels:
+
+	Trash – Completely nonsensical or chaotic without any discernible meaning.
+
+	Bad – Extremely weak, full of predictable phrases or lacking any effort.
+
+	Basic – Functional but unremarkable; nothing particularly noteworthy.
+
+	Passable – Has some structure and meaning but remains forgettable.
+
+	Engaging – Holds attention and has some interesting aspects.
+
+	Captivating – Well-crafted, with strong imagery and polished execution.
+
+	Masterful – Outstanding and memorable, displaying exceptional skill.
+
+	For each rating, provide a brief justification (2-3 sentences) explaining why the lyrics fit that category. These explanations should not reference the evaluation criteria explicitly but should still clarify why the rating was given.
+
+
+	What follows are a series of examples, i.e., lines with scores, that you will take into consideration when evaluating. These are grouped into two sets. GROUP_0 consists of lines that are great, Group_1 consists of lines that are bad.
+
+	Evaluation Reference – Example Groups:
+
+	GROUP_0 EXAMPLES:
+	{GROUP_0 EXAMPLES}
+
+	#GROUP_1 EXAMPLES:
+	{GROUP_1 EXAMPLES}
+
+
+	OUTPUT STRUCTURE
+	It is imperative that your response matches this exact schema:
+
+	Resonance-Rating: YYY
+	Resonance-Explanation: XXX
+
+	Coherence-Rating: YYY
+	Coherence-Explanation: XXX
+
+	Musicality-Rating: YYY
+	Musicality-Explanation: XXX
+
+	Narrative-Rating: YYY
+	Narrative-Explanation: XXX
+
+	Originality-Rating: YYY
+	Originality-Explanation: XXX
+
+	Where YYY will always be in [Trash, Bad, Basic, Passable, Engaging, Captivating, Masterful]
+	and XXX will always be your free-text explanation.
+
+
+	Not adhering to this schema will render your response invalid. Always, under any circumstances, follow the schema described.
+
+	Take your time and make sure you evaluate sensibly. Now, evaluate the following lyrics:
+
+	{prompt}"
+
+
+--> Außerdem wurden unzählige Formulierungen, Inhaltsangaben und Code-Korrekturen genutzt, die hier nicht aufgezeigt werden, jedoch auch nicht von hoher Relevanz zeugen.
